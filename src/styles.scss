@@ -1,0 +1,54 @@
+@import '~@angular/material/theming'; 
+@include mat-core();   
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+:root{
+    --primary : #00FB89;
+    --secondary : #424448 ;
+}
+*{
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: #F1F3F5;
+    overflow-x: hidden;
+}
+.btn{
+    min-width: 200px !important;
+    line-height: 36px;
+    padding: 15px 26px !important;
+    margin: 0 10px !important;
+    border-radius: 10px !important;
+    text-transform: uppercase;
+}
+
+.btn.mat-primary{
+    background:  var(--secondary) !important;
+    color: #fff !important;
+}
+
+.btn.mat-accent{
+    background: #fff !important;
+    color:  var(--secondary) !important;
+}
+.mat-card{
+    background: #fff;
+    border-radius: 10px !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label{
+    color: var(--primary) !important;
+
+}
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: var(--secondary) !important;
+
+}
+.mat-dialog-container{
+    background: #fff;
+    border-radius: 10px !important;
+}

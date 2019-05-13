@@ -1,0 +1,63 @@
+
+:hostit-splash{
+    .splash{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        height: 100%;
+        width: 100%;
+        .content{
+            svg{
+                display: block;
+                margin: 0 auto;
+                animation: float 6s ease-in-out infinite;
+                path{
+                    fill: var(--secondary);
+                }
+            }
+            strong{
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+                font-size: 52px;
+                color: var(--secondary);
+            }
+            p{
+                text-align: center;
+                line-height: 1;
+                color: var(--secondary);
+                margin: 40px 0;
+            }
+            .row{
+                margin: 0 auto;
+                text-align: center;
+                .btn{
+                    margin: 9px 10px !important;
+                }
+            }
+        }
+    }
+    @keyframes float {
+        0% { 
+            transform: translatey(0px);
+        }
+        50% { 
+            transform: translatey(-20px);
+        }
+        100% { 
+            transform: translatey(0px);
+        }
+    }
+    @media(max-width: 981px){
+        .splash{
+            .content{
+                .row{
+                    .btn{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}

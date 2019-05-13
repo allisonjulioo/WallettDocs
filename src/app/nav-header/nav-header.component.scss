@@ -1,0 +1,42 @@
+:hostit-nav-header {
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+
+    .nav {
+        max-width: 1280px;
+        width: 86%;
+        display: flex;
+        align-items: center;
+        height: 120px;
+
+        #logo {
+            flex: 11;
+            display: flex;
+            margin-left: 0;
+            align-items: center;
+            cursor: pointer;
+
+            span {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            svg {
+                width: 40px;
+                margin: 0 12px;
+
+                path {
+                    color: var(--secondary);
+                }
+            }
+        }
+
+        .btn {
+            flex: 1;
+            float: right;
+            margin: 0;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+ 
+$color-primary: #821d8d;;
+$color-secondary:#821d8d;;
+$color-secondary-hover: #821d8d;
+
+@mixin gradient($from, $to) {
+    transition: all .3s linear;
+    background: -webkit-linear-gradient(-135deg, $from, $to) !important;
+    background: -o-linear-gradient(-135deg, $from, $to) !important;
+    background: -moz-linear-gradient(-135deg, $from, $to) !important;
+    background: linear-gradient(-135deg, $from, $to) !important;
+}
+
+@mixin gradientHover($from, $to) {
+    transition: all .3s linear;
+    background: -webkit-linear-gradient(135deg, $from, $to) !important;
+    background: -o-linear-gradient(135deg, $from, $to) !important;
+    background: -moz-linear-gradient(135deg, $from, $to) !important;
+    background: linear-gradient(135deg, $from, $to) !important;
+}

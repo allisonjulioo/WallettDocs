@@ -1,0 +1,91 @@
+:hostit-main {
+    &:before {
+        content: '';
+        display: block;
+        height: 150px;
+        widows: 100%;
+        background: var(--primary);
+        animation: fadeInDown 1s ease-in-out;
+    }
+
+    mat-card {
+        min-height: 70vh;
+        margin: -30px auto 0;
+        display: block;
+        width: 84%;
+        max-width: 1280px;
+        padding: 0;
+
+        #list-docs {
+            max-width: 300px;
+            width: 100%; 
+            min-height: 80vh;
+            display: block;
+            border-right: 1px solid #C7C7C7;
+            clear: both;
+
+            .header-list {
+                background: #eee;
+                border-radius: 10px 0px 0 0;
+
+                button {
+                    margin: 0;
+                    background: transparent;
+                    border-radius: 10px 0px 0 0;
+                    position: relative;
+                }
+
+                .left-actions {
+                    float: right;
+                    margin-right: 11px;
+                    margin-top: 2px;
+                }
+            }
+
+            .search-list {
+                background: #F8F8F8;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input {
+                    border: none;
+                    width: 83%;
+                    border-radius: 4px;
+                    height: 20px;
+                    padding: 8px 10px;
+
+                    &::placeholder {
+                        color: #838383;
+                        font-style: italic;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .list-docs {
+                padding-bottom: 2px;
+                button {
+                    &.doc {
+                        width: 100%;
+                        text-align: left;
+                        height: 65px;
+                        border-bottom: 1px solid #eeeeee;
+                        span{    
+                            font-weight: 300;
+                            margin-top: 5px;
+                            display: inline-block;
+                        }
+                        .more-menu{
+                            float: right;
+                        }
+                        &:hover{
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

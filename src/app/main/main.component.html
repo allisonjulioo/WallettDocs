@@ -1,0 +1,42 @@
+<div class="content">
+    <mat-card class="animated fadeInUp">
+        <div id="list-docs">
+            <section class="header-list">
+                <button mat-flat-button color="light">
+                    <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison Julio</strong>
+                </button>
+                <div class="left-actions">
+                    <button mat-icon-button  matTooltip="Baixar lista de documentos">
+                        <mat-icon>play_for_work</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Selecionar tudo">
+                        <mat-icon>check</mat-icon>
+                    </button>
+                </div>
+            </section>
+
+            <div class="search-list">
+                <input type="text" name="search" id="" placeholder="Busque por documentos">
+            </div>
+
+            <div class="list-docs">
+                <button mat-flat-button color="light" class="doc" disableRipple="true" *ngFor="let doc of docs">
+                    <button mat-icon-button (click)="lock=!lock">
+                        <mat-icon *ngIf="lock">lock</mat-icon>
+                        <mat-icon *ngIf="!lock">lock_open</mat-icon>
+                    </button>
+                    <span>{{doc.label}}</span>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Baixar</button> 
+                        <button mat-menu-item>Selecionar</button> 
+                        <button mat-menu-item>Excluir</button> 
+                    </mat-menu>
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>
