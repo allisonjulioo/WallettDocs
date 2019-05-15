@@ -23,7 +23,7 @@ import {
   MatCardModule, 
   MatInputModule,
   MatDialogModule
-} from '@angular/material';
+} from '@angular/material'; 
 
 
 @NgModule({

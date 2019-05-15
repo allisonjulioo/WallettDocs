@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  selectedDoc;
   docs = [
     {
       label: 'Carteira de identidade'
@@ -20,6 +21,10 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+  public openDocument(doc){
+    console.log(doc);
+    this.selectedDoc = doc;
   }
 
 }

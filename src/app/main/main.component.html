@@ -6,7 +6,7 @@
                     <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison Julio</strong>
                 </button>
                 <div class="left-actions">
-                    <button mat-icon-button  matTooltip="Baixar lista de documentos">
+                    <button mat-icon-button matTooltip="Baixar lista de documentos">
                         <mat-icon>play_for_work</mat-icon>
                     </button>
                     <button mat-icon-button matTooltip="Selecionar tudo">
@@ -20,7 +20,13 @@
             </div>
 
             <div class="list-docs">
-                <button mat-flat-button color="light" class="doc" disableRipple="true" *ngFor="let doc of docs">
+                <button 
+                mat-flat-button color="light" 
+                class="doc" 
+                disableRipple="true" 
+                [ngClass]="{'active' : doc == selectedDoc}"
+                *ngFor="let doc of docs"
+                (click)="openDocument(doc)">
                     <button mat-icon-button (click)="lock=!lock">
                         <mat-icon *ngIf="lock">lock</mat-icon>
                         <mat-icon *ngIf="!lock">lock_open</mat-icon>
@@ -31,12 +37,13 @@
                     </button>
 
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Baixar</button> 
-                        <button mat-menu-item>Selecionar</button> 
-                        <button mat-menu-item>Excluir</button> 
+                        <button mat-menu-item>Baixar</button>
+                        <button mat-menu-item>Selecionar</button>
+                        <button mat-menu-item>Excluir</button>
                     </mat-menu>
                 </button>
             </div>
         </div>
+        <it-content-doc></it-content-doc>
     </mat-card>
 </div>

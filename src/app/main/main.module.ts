@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MainComponent } from './main.component'; 
-
+import { ContentDocComponent } from './content-doc/content-doc.component'; 
 // Angular CLI 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -24,6 +24,7 @@ import {
 @NgModule({
   declarations: [
     MainComponent, 
+    ContentDocComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
