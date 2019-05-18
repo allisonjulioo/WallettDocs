@@ -22,7 +22,8 @@ import {
   MatButtonModule, 
   MatCardModule, 
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatIconModule
 } from '@angular/material';
 
 
@@ -47,7 +48,8 @@ import {
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [ 
   ],

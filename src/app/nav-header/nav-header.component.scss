@@ -34,9 +34,31 @@
         }
 
         .btn {
-            flex: 1;
-            float: right;
-            margin: 0;
+            &.search-user {
+                display: block;
+                flex: 1;
+                float: right;
+                margin: 0; 
+            }
         }
+        
+        
+        .search-user-m {
+            display: none ; 
+            mat-icon{
+                color: black;
+            }
+        }
+    }
+    @media(max-width: 981px){
+        .btn {
+            &.search-user {
+                display: none !important; 
+            }
+        }
+        
+        .search-user-m {
+            display: block !important; 
+        } 
     }
 }

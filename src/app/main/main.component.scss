@@ -88,4 +88,15 @@
             }
         }
     }
+    @media(max-width: 981px){
+        mat-card{
+            width: 94%;
+            #list-docs{
+                max-width: 100%;
+                .header-list{
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
 }

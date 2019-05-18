@@ -5,6 +5,9 @@
     </svg> 
     <span>Integrate</span>
   </figure>
-  <button mat-raised-button class="btn animated fadeInDown delay-1s" color="primary" 
+  <button mat-raised-button class="btn search-user animated fadeInDown delay-1s" color="primary" 
    *ngIf="router.url == '/main'" (click)="openDialog()">PESQUISAR USUÁRIO</button>
+
+   <button mat-icon-button class="search-user-m animated fadeInDown delay-1s" 
+   *ngIf="router.url == '/main'" (click)="openDialog()"><mat-icon>search</mat-icon></button>
 </nav>
