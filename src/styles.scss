@@ -1,54 +1,109 @@
-@import '~@angular/material/theming'; 
-@include mat-core();   
+@import '~@angular/material/theming';
+@include mat-core();
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-:root{
-    --primary : #00FB89;
-    --secondary : #424448 ;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+
+:root {
+    --primary:#3b5258;
+    --secondary: #f9f9f9;
 }
-*{
-    font-family: 'Roboto', sans-serif;
+
+* {
+    font-family: 'Montserrat', sans-serif;
     outline: none;
 }
-body{
+
+body {
     padding: 0;
     margin: 0;
     height: 100vh;
     background: #F1F3F5;
     overflow-x: hidden;
 }
-.btn{
+
+.btn,
+button,
+.mat-button {
+    text-transform: capitalize !important;
+}
+
+.btn {
     min-width: 200px !important;
     line-height: 36px;
-    padding: 15px 26px !important;
+    padding: 8px 26px !important;
     margin: 0 10px !important;
-    border-radius: 10px !important;
-    text-transform: uppercase;
+    border-radius: 3px !important;
 }
 
-.btn.mat-primary{
-    background:  var(--secondary) !important;
-    color: #fff !important;
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary {
+    background: var(--primary) !important;
+    color: var(--secondary) !important;
+
+    span {
+        text-transform: capitalize !important;
+    }
 }
 
-.btn.mat-accent{
-    background: #fff !important;
-    color:  var(--secondary) !important;
+.btn.mat-accent {
+    // background: #fff !important;
+    // color: var(--secondary) !important;
 }
-.mat-card{
+
+.mat-card {
     background: #fff;
-    border-radius: 10px !important;
+    border-radius: 2px !important;
 }
 
-.mat-form-field.mat-focused .mat-form-field-label{
+.mat-form-field.mat-focused .mat-form-field-label {
     color: var(--primary) !important;
 
 }
-.mat-form-field.mat-focused .mat-form-field-ripple{
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: var(--secondary) !important;
 
 }
-.mat-dialog-container{
+
+.mat-dialog-container {
     background: #fff;
-    border-radius: 10px !important;
+    border-radius: 2px !important;
+}
+
+svg {
+
+    path,
+    span {
+        // fill: var(--secondary) !important;
+    }
+}
+
+.search-user {
+    mat-dialog-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+}
+
+.router-name {
+    display: block;
+    height: 300px;
+    width: 100%;
+    background: var(--primary);
+    margin: 0px 0 10px;
+    align-items: center;
+    position: relative;
+    top: 57px;
+
+    h2 {
+        width: 84%;
+        max-width: 1280px;
+        margin: 0 auto;
+        display: block;
+        font-weight: normal;
+    }
 }

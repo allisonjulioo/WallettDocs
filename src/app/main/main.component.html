@@ -1,32 +1,41 @@
+<div class="router-name">
+    <h2></h2>
+</div>
 <div class="content">
-    <mat-card class="animated fadeInUp">
-        <div id="list-docs">
+    <mat-card class="animated mat-elevation-z10">
+        <div id="list-docs" class="animated slideInLeft faster">
             <section class="header-list">
-                <button mat-flat-button color="light">
+                <button mat-flat-button color="light" routerLink="/profile">
                     <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison Julio</strong>
                 </button>
                 <div class="left-actions">
-                    <button mat-icon-button matTooltip="Baixar lista de documentos">
+                    <!-- <button mat-icon-button matTooltip="Baixar lista de documentos" >
                         <mat-icon>play_for_work</mat-icon>
-                    </button>
-                    <button mat-icon-button matTooltip="Selecionar tudo">
-                        <mat-icon>check</mat-icon>
-                    </button>
+                    </button> -->
+                    <button mat-icon-button class="more-menu" [matMenuTriggerFor]="profile">
+                        <mat-icon>more_vert</mat-icon>
+                    </button> 
+                    <mat-menu #profile="matMenu">
+                        <button mat-menu-item (click)="checkAll =! checkAll">Selecionar tudo</button> 
+                        <button mat-menu-item (click)="openBottomSheet()">Baixar tudo</button>
+                    </mat-menu>
                 </div>
-            </section>
-
+            </section> 
             <div class="search-list">
                 <input type="text" name="search" id="" placeholder="Busque por documentos">
-            </div>
-
+            </div> 
             <div class="list-docs">
                 <button 
                 mat-flat-button color="light" 
                 class="doc" 
                 disableRipple="true" 
-                [ngClass]="{'active' : doc == selectedDoc}"
+                [ngClass]="{'active' : doc == selectedDoc || checkAll}"
                 *ngFor="let doc of docs"
-                (click)="openDocument(doc)">
+                (click)="openDocument(doc, $event, key); child.setDoc(doc)">
+                <mat-checkbox color="primary" 
+                *ngIf="checkAll || doc == checkThis"
+                [(ngModel)]="checkAll"
+                ></mat-checkbox>
                     <button mat-icon-button (click)="lock=!lock">
                         <mat-icon *ngIf="lock">lock</mat-icon>
                         <mat-icon *ngIf="!lock">lock_open</mat-icon>
@@ -38,12 +47,22 @@
 
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Baixar</button>
-                        <button mat-menu-item>Selecionar</button>
+                        <button mat-menu-item (click)="checkThisDoc(doc)">Selecionar</button>
                         <button mat-menu-item>Excluir</button>
                     </mat-menu>
                 </button>
             </div>
+            <div class="pagination">
+                <mat-paginator 
+                [hidePageSize]="true"
+                [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
+            </div>
         </div>
-        <it-content-doc></it-content-doc>
+        <it-content-doc #child ></it-content-doc>
+        <router-outlet></router-outlet>
+        
     </mat-card>
 </div>

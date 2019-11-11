@@ -1,8 +1,5 @@
 <div id="contentdoc">
     <section class="header-list">
-        <button mat-icon-button matTooltip="Voltar">
-            <mat-icon>keyboard_backspace</mat-icon>
-        </button>
         <div class="left-actions">
             <button mat-icon-button matTooltip="Baixar lista de documentos">
                 <mat-icon>play_for_work</mat-icon>
@@ -20,21 +17,28 @@
 
     <div class="flex">
         <div class="content-doc">
-            <div class="head">
-                <h3>{{docs?.label || 'Documento vazio'}}</h3>
-            </div>
-            <div class="body">
+            <mat-form-field>
+                <mat-label>Documento</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let doc of docs" [value]="doc.label" (keypress)="clearSelected()"
+                        (onSelectionChange)="selectedDocument(doc.details)">
+                        {{doc.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="body list">
                 <div class="list-detais">
-                    <div *ngFor="let detail of docs?.details" class="detail" >
-                        <strong>{{detail.label}}</strong>
+                    <mat-card *ngFor="let detail of selectedDoc" class="detail mat-elevation-z0">
+                        <button mat-icon-button><mat-icon>delete</mat-icon></button>
+                        <input matInput [(ngModel)]="detail.label" class="label">
                         <section>
-                            <span *ngFor="let value of detail.value">{{value}}
-                                <button mat-icon-button (click)="copyLabel(value)">
-                                    <mat-icon>file_copy</mat-icon>
-                                </button>
-                            </span>
+                            <input matInput *ngFor="let value of detail.value" type="text" [value]="value" class="input">
                         </section>
-                    </div>
+                    </mat-card>
+                    <button color="primary" mat-flat-button class="new-camp" (click)="addNewCamp()">
+                        <mat-icon>add</mat-icon> 
+                        Adicionar novo campo
+                    </button>
                 </div>
             </div>
         </div>

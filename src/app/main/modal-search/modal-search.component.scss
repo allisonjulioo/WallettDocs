@@ -1,0 +1,36 @@
+:hostit-modal-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .search {
+        display: flex;
+        width: 80%;
+
+        button {
+            &.close {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            &.search-btn{
+                width: 100%;
+                margin: 10px 0 !important;
+            }
+        }
+
+        mat-form-field {
+            display: block;
+        }
+
+        .head {
+            flex: 3;
+            margin: 0 40px 0 0;
+        }
+
+        .body {
+            flex: 3;
+        }
+    }
+}

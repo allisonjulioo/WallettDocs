@@ -16,7 +16,6 @@ import { SplashComponent } from './splash/splash.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
-import { ModalSearchComponent } from './modal-search/modal-search.component';
 
 import { 
   MatButtonModule, 
@@ -33,8 +32,7 @@ import {
     SplashComponent,
     RegisterComponent, 
     LoginComponent, 
-    NavHeaderComponent, 
-    ModalSearchComponent
+    NavHeaderComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
@@ -54,6 +52,6 @@ import {
   providers: [ 
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalSearchComponent],
+
 })
 export class AppModule { }

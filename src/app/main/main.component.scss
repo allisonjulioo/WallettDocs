@@ -1,37 +1,34 @@
 :hostit-main {
-    &:before {
-        content: '';
-        display: block;
-        height: 150px;
-        widows: 100%;
-        background: var(--primary);
-        animation: fadeInDown 1s ease-in-out;
-    }
+    padding-top: 100px;
+    overflow: hidden;
+
 
     mat-card {
         min-height: 70vh;
-        margin: -30px auto 0;
+        margin: -190px auto 0;
         display: flex;
-        width: 84%;
+        width: 100%;
         max-width: 1280px;
         padding: 0;
+        overflow: hidden;
 
         #list-docs {
             max-width: 300px;
-            width: 100%; 
+            width: 100%;
             min-height: 80vh;
             display: block;
             border-right: 1px solid #C7C7C7;
             clear: both;
+            position: relative;
 
             .header-list {
                 background: #eee;
-                border-radius: 10px 0px 0 0;
+                border-radius: 2px 0px 0 0;
 
                 button {
                     margin: 0;
                     background: transparent;
-                    border-radius: 10px 0px 0 0;
+                    border-radius: 2px 0px 0 0;
                     position: relative;
                 }
 
@@ -66,43 +63,82 @@
 
             .list-docs {
                 padding-bottom: 2px;
+
                 button {
+                    border-left: 3px solid transparent;
+
                     &.doc {
                         width: 100%;
                         text-align: left;
                         height: 65px;
                         border-bottom: 1px solid #eeeeee;
-                        span{    
+
+                        span {
                             font-weight: 300;
                             margin-top: 5px;
                             display: inline-block;
                         }
-                        .more-menu{
+
+                        .more-menu {
                             float: right;
                         }
-                        &:hover{
-                            background-color: #eee;
+
+                        &:hover {
+                            background-color: #f7f7f7;
                         }
-                         &.active{
-                            background-color: var(--primary);
-                            color: var(--secondary);
-                            span{    
-                                font-weight: bold; 
+
+                        &.active {
+                            background-color: #eee;
+                            // color: var(--secondary);
+                            border-left: 3px solid #0099d3;
+
+                            span {
+                                font-weight: bold;
                             }
                         }
                     }
                 }
             }
+
+            .pagination {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background: transparent;
+            }
         }
     }
-    @media(max-width: 981px){
-        mat-card{
-            width: 94%;
-            #list-docs{
+
+    @media (max-width: 1024px) {
+        mat-card {
+            width: 100% !important;
+        }
+    }
+
+    @media(max-width: 981px) {
+        mat-card {
+            width: 100%;
+            display: block;
+            margin: -250px auto 0;
+            min-height: 100vh;
+
+            #list-docs {
                 max-width: 100%;
-                .header-list{
-                    border-radius: 10px;
+
+                .header-list {
+                    border-radius: 2px;
                 }
+            }
+        }
+
+        it-content-doc {
+            position: absolute;
+            top: 0;
+            background: #fff;
+            .flex{
+                display: block;
             }
         }
     }

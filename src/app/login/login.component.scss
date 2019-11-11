@@ -5,10 +5,14 @@
     background: var(--primary);
     min-height: 100%;
     width: 100%;
-
+    svg{
+        display: block;
+        margin: 0 auto;
+        width: 64px;
+        text-align: center;
+    }
     .mat-card {
         text-align: center;
-        padding: 49px 10px;
         min-width: 400px;
 
         .title {
@@ -16,9 +20,9 @@
         }
 
         a {
-            margin-top: 35px;
+            margin-top: 15px;
             display: block;
-            color: var(--secondary);
+            color: var(--primary);
         }
     }
 

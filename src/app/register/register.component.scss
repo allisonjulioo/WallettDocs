@@ -6,6 +6,12 @@
     min-height: 100%;
     width: 100%;
     padding-top: 50px;
+    svg{
+        display: block;
+        margin: 0 auto;
+        width: 64px;
+        text-align: center;
+    }
 
     .mat-card {
         text-align: center;
@@ -44,7 +50,7 @@
 
     .input-full-width {
         display: block;
-        margin: 0 auto 30px;
+        margin: 0 auto 10px;
         width: 80%; 
 
     }

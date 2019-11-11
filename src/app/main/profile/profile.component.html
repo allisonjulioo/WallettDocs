@@ -1,0 +1,47 @@
+<div class="router-name">
+  <h2></h2>
+</div>
+<div class="content">
+  <mat-card class="animated mat-elevation-z10">
+    <div id="profile">
+      <section class="header-list">
+        <button mat-icon-button color="light" routerLink="/main">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <strong>Perfil</strong>
+      </section>
+
+      <div class="profile animated slideInLeft faster">
+        <section class="avatar">
+          <figure>
+            <img src="./assets/img/avatar.png" alt="" width="160">
+            <button mat-icon-button>
+              <mat-icon>camera</mat-icon>
+            </button>
+          </figure>
+        </section>
+        <section class="body">
+          <div class="name">
+            <small>Seu nome</small>
+            <h2 class="">Allison Julio</h2>
+          </div>
+          <div class="security">
+            <small>Segurança de acesso externo</small>
+            <p class="">Essa senha é diferente da senha de login, e é utilizada para compartilhar seus dados com
+              pessoas de sua confiança.</p>
+
+            <form class="search-form" autocomplete="off">
+              <mat-form-field>
+                <input matInput placeholder="Digite a senha" type="password" autofocus autocomplete="off"  name="security_pass">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Confirme a senha"  type="password" autocomplete="off"  name="confirm_security_pass">
+              </mat-form-field> 
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+    <it-edit-docs #child></it-edit-docs>
+  </mat-card>
+</div>

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalSearchComponent } from './../modal-search/modal-search.component';
+import { ModalSearchComponent } from './../main/modal-search/modal-search.component';
 import { MatDialog } from '@angular/material';
 
+export interface DialogData {
+  cpf: number;
+  password: string;
+}
 
 @Component({
   selector: 'it-nav-header',
@@ -10,21 +14,25 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./nav-header.component.scss']
 })
 export class NavHeaderComponent implements OnInit {
-  animal: string;
-  name: string;
-
-  constructor(public router : Router, public dialog: MatDialog) { }
+  cpf: number;
+  password: string;
+  constructor(public router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalSearchComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
+      width: '550px',
+      minWidth: '60%',
+      height: '350px',
+      panelClass: 'search-user',
+      data: { cpf: this.cpf, password: this.password }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed'); 
+      this.cpf = result;
+      console.log('Busca', { cpf: result.cpf, password: result.password });
+
     });
   }
 }

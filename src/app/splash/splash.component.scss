@@ -1,5 +1,8 @@
 
 :hostit-splash{
+    .logo{
+        text-align: center;
+    }
     .splash{
         display: flex;
         align-items: center;
@@ -8,7 +11,7 @@
         height: 100%;
         width: 100%;
         .content{
-            svg{
+            img{
                 display: block;
                 margin: 0 auto;
                 animation: float 6s ease-in-out infinite;
