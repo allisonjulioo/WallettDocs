@@ -88,6 +88,8 @@
     @media(max-width: 981px) {
         mat-card {
             width: 100%;
+            display: block;
+            margin: -251px auto 0;
 
             #profile {
                 max-width: 100%;

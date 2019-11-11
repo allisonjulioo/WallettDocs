@@ -5,12 +5,14 @@
     background: var(--primary);
     min-height: 100%;
     width: 100%;
-    svg{
+
+    svg {
         display: block;
         margin: 0 auto;
         width: 64px;
         text-align: center;
     }
+
     .mat-card {
         text-align: center;
         min-width: 400px;
@@ -48,15 +50,17 @@
     .input-full-width {
         display: block;
         margin: 0 auto 10px;
-        width: 80%; 
+        width: 80%;
 
     }
-    @media(max-width: 510px){
-        .mat-card{
+
+    @media(max-width: 510px) {
+        .mat-card {
+            height: 100vh;
             min-width: auto;
-            max-width: 90%;
-            width: 90%;
-            margin-top: 70px;
+            max-width: 100%;
+            width: 100%;
+            margin-top: 0px;
         }
     }
 }

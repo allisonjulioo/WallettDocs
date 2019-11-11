@@ -124,4 +124,11 @@
             }
         }
     }
+    @media (max-width: 981px) {
+        #contentdoc{
+            .flex {
+                display: block;
+            }
+        }
+    }
 }
