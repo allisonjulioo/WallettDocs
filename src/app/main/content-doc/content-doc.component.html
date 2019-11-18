@@ -1,55 +1,71 @@
 <div id="contentdoc">
-    <section class="header-list">
-        <button mat-icon-button matTooltip="Voltar">
-            <mat-icon>keyboard_backspace</mat-icon>
-        </button>
-        <div class="left-actions">
-            <button mat-icon-button matTooltip="Baixar lista de documentos">
-                <mat-icon>play_for_work</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="Selecionar tudo" [matMenuTriggerFor]="docMenu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #docMenu="matMenu">
-                <button mat-menu-item>Baixar</button>
-                <button mat-menu-item (click)="checkThisDoc(doc)">Proteger</button>
-                <button mat-menu-item>Excluir</button>
-            </mat-menu>
-        </div>
-    </section>
-
+    <div class="mat-toolbar mat-primary" style="padding: 20px;">
+        <mat-form-field  class="title full-width">
+            <mat-label>Descrição do documento</mat-label>
+            <input matInput [(ngModel)]="new_doc.label">
+        </mat-form-field>
+        <!-- <button mat-icon-button matTooltip="Voltar" (click)="closeModal()" class="pull-right btn-close ">
+            <mat-icon>close</mat-icon>
+        </button> -->
+    </div>
     <div class="flex">
         <div class="content-doc">
-            <div class="head">
-                <h3>{{docs?.label || 'Documento vazio'}}</h3>
-            </div>
             <div class="body">
-                <div class="list-detais">
-                    <div *ngFor="let detail of docs?.details" class="detail" >
-                        <strong>{{detail.label}}</strong>
-                        <section>
-                            <span *ngFor="let value of detail.value">{{value}}
-                                <button mat-icon-button (click)="copyLabel(value)">
-                                    <mat-icon>file_copy</mat-icon>
-                                </button>
-                            </span>
-                        </section>
-                    </div>
-                </div>
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="Adicionar campos">
+                        <div class="list-detais head">
+                            <div class="detail">
+                                <mat-form-field appearance="fill" >
+                                    <mat-label>Campo</mat-label>
+                                    <input matInput [(ngModel)]="new_doc.description">
+                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>valor</mat-label>
+                                    <input matInput [(ngModel)]="new_doc.value">
+                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                </mat-form-field>
+                                <button mat-flat-button color="primary" (click)="addNewField()"><mat-icon>add</mat-icon> </button>
+                            </div>
+                            <table class="cdk-table mat-elevation-z2 mat-table">
+                                <tbody>
+                                    <tr class="cdk-row mat-row" *ngFor="let doc of docs.fields; let i = inded">
+                                        <td class="cdk-cell mat-cell cdk-column-position mat-column-position">
+                                            {{doc.description}}
+                                        </td>
+                                        <td class="cdk-cell mat-cell cdk-column-position mat-column-position">
+                                            {{doc.value}}
+                                        </td>
+                                        <td class="cdk-cell mat-cell cdk-column-position mat-column-position action">
+                                            <button mat-icon-button (click)="deleteField(i)"><mat-icon color="primary">delete</mat-icon></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Adicionar anexos">
+                        <div class="attachment-doc head">
+                            <button mat-flat-button color="primary" style="position: relative;">
+                                Adicionar arquivo
+                            <input (change)="onFileSelected()" type="file" id="file" class="full-width"
+                                    style="opacity: 0; position: absolute; top: 0; left: 0; width: 100%;">
+                            </button>
+                            <pdf-viewer 
+                                    [src]="pdfSrc" 
+                                    [render-text]="false"
+                                    [original-size]="false"
+                                    [show-all]="false"
+                                    [zoom]="zoom">
+                            </pdf-viewer>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </div>
-        <div class="attachment-doc">
-            <div class="head">
-                <h3>Anexos</h3>
-            </div>
-            <div class="body">
-                <figure>
-                    <img src="./assets/img/doc.png" alt="" width="200">
-                </figure>
-                <div class="action">
-                    <button class="btn" mat-stroked-button color="primary"> Baixar</button>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div mat-dialog-actions  class="flex-end">
+        <button mat-button (click)="dialogRef.close()">Cancelar</button>
+        <button mat-flat-button (click)="closeModal()"cdkFocusInitial color="accent">Salvar</button>
     </div>
 </div>

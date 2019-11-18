@@ -1,5 +1,5 @@
 <div id="contentdoc">
-    <section class="header-list">
+    <!-- <section class="header-list">
         <div class="left-actions">
             <button mat-icon-button matTooltip="Baixar lista de documentos">
                 <mat-icon>play_for_work</mat-icon>
@@ -13,36 +13,103 @@
                 <button mat-menu-item>Excluir</button>
             </mat-menu>
         </div>
-    </section>
+    </section> -->
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Perfil</span>
+            <span class="spacer"></span>
+            <button mat-icon-button>
+                <mat-icon color="light" (click)="selectedDoc = {}" class="icon" aria-hidden="false" aria-label="Favorito">close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
     <div class="flex">
         <div class="content-doc">
-            <mat-form-field>
-                <mat-label>Documento</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let doc of docs" [value]="doc.label" (keypress)="clearSelected()"
-                        (onSelectionChange)="selectedDocument(doc.details)">
-                        {{doc.label}}
-                    </mat-option>
-                </mat-select>
+            <section class="flex align-center space-between" style="margin-bottom: 20px">
+                <h3>Seus documentos</h3>
+                <button mat-flat-button aria-label="Novo" color="accent" style="float: right" (click)="addNewDoc('')">
+                    <mat-icon>add</mat-icon> Adicionar
+                </button>
+            </section>
+            <mat-form-field appearance="fill" style="width: 50%; margin-bottom: 20px">
+                <mat-label>Buscar</mat-label>
+                <input matInput>
+                <mat-icon matPrefix>search</mat-icon>
+                <mat-hint>Busque pelo nome do documento</mat-hint>
             </mat-form-field>
             <div class="body list">
-                <div class="list-detais">
-                    <mat-card *ngFor="let detail of selectedDoc" class="detail mat-elevation-z0">
-                        <button mat-icon-button><mat-icon>delete</mat-icon></button>
-                        <input matInput [(ngModel)]="detail.label" class="label">
-                        <section>
-                            <input matInput *ngFor="let value of detail.value" type="text" [value]="value" class="input">
-                        </section>
-                    </mat-card>
-                    <button color="primary" mat-flat-button class="new-camp" (click)="addNewCamp()">
-                        <mat-icon>add</mat-icon> 
-                        Adicionar novo campo
-                    </button>
-                </div>
+                <table mat-table [dataSource]="docs" class="mat-elevation-z0 table-docs">
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox 
+                            (change)="$event ? masterToggle() : null" 
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()" 
+                            [aria-label]="checkboxLabel()">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            <mat-checkbox 
+                            (click)="$event.stopPropagation()" 
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)" 
+                            [aria-label]="checkboxLabel(row)">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                        <td mat-cell *matCellDef="let do"> {{do.description}} </td>
+                    </ng-container>
+
+                    <!-- value Column -->
+                    <ng-container matColumnDef="value">
+                        <th mat-header-cell *matHeaderCellDef> Campos </th>
+                        <td mat-cell *matCellDef="let do"> <button mat-button matTooltip="Copiar {{do.description}}"  (click)="copy.copy(do.value)">{{do.value}}</button>
+                        </td>
+                    </ng-container>
+
+                    <!-- last_modify Column -->
+                    <ng-container matColumnDef="last_modify">
+                        <th mat-header-cell *matHeaderCellDef> Última atualização </th>
+                        <td mat-cell *matCellDef="let do"> {{do.last_modify}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="icons">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: right">
+                            <button mat-flat-button aria-label="Editar" [matMenuTriggerFor]="listMenu" color="primary" *ngIf="selection._selected.length">
+                                 Ações <mat-icon>expand_more</mat-icon>
+                            </button>
+                            <mat-menu #listMenu="matMenu">
+                                <button mat-menu-item>Baixar</button>
+                                <button mat-menu-item>Excluir</button>
+                            </mat-menu>
+                        </th>
+                        <td mat-cell *matCellDef="let do" style="text-align: right;">
+                            <div class="example-button-row">
+                                <button mat-icon-button aria-label="Anexos">
+                                    <mat-icon matBadge="1" matTooltip="Anexos 1" matBadgeColor="accent" matBadgePosition="before">attach_file</mat-icon>
+                                </button>
+                                <button mat-icon-button aria-label="Excluir" matTooltip="Excluir">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-icon-button aria-label="Editar" matTooltip="Editar" (click)="selectedDocument(do)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'selected': selection.isSelected(row)}"></tr>
+                </table> 
             </div>
         </div>
-        <div class="attachment-doc">
+        <!-- <div class="attachment-doc">
             <div class="head">
                 <h3>Anexos</h3>
             </div>
@@ -54,6 +121,6 @@
                     <button class="btn" mat-stroked-button color="primary"> Baixar</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

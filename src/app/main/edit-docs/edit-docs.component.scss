@@ -1,8 +1,12 @@
 :hostit-edit-docs {
     width: 100%;
 
+    table {
+        width: 100%;
+    }
+
     .header-list {
-        background: #eee;
+        background: #0099d3;
         border-radius: 0px 2px 0 0;
         display: block;
         width: 100%;
@@ -12,6 +16,19 @@
             display: flex;
             float: right;
             margin-right: 10px;
+        }
+    }
+
+    .table-docs {
+        tr {
+            &:hover {
+                background: #fafafa;
+                margin: 210px;
+            }
+
+            &.selected {
+                background: #fff8d3;
+            }
         }
     }
 
@@ -53,7 +70,8 @@
 
         .body {
             margin-top: 40px;
-            &.list{
+
+            &.list {
                 margin-top: 0;
             }
 
@@ -94,11 +112,12 @@
                     margin-top: 30px;
                     position: relative;
                     background: #fafafa;
-                    &:hover{
+
+                    &:hover {
                         background: #fff;
-                        box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 
-                        0px 5px 8px 0px rgba(0, 0, 0, 0.14), 
-                        0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+                        box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+                            0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+                            0px 1px 14px 0px rgba(0, 0, 0, 0.12);
                     }
 
                     button {
@@ -106,17 +125,23 @@
                         top: 0;
                         right: 0;
                     }
-                    input{
+
+                    input {
                         margin-bottom: 4px;
                     }
-                    .label{
+
+                    .label {
                         margin-bottom: 10px;
                     }
-                    .input{
+
+                    .input {
                         padding: 5px;
                         font-size: 13px;
                         margin-bottom: 10px;
-                        &:hover, &:active, &:focus{
+
+                        &:hover,
+                        &:active,
+                        &:focus {
                             background: #eee;
                         }
                     }
@@ -124,8 +149,9 @@
             }
         }
     }
+
     @media (max-width: 981px) {
-        #contentdoc{
+        #contentdoc {
             .flex {
                 display: block;
             }

@@ -1,9 +1,9 @@
-:hostit-profile { 
+:hostit-profile {
     mat-card {
-        min-height: 70vh;
-        margin: -190px auto 0;
+        min-height: 100vh;
+        margin: 55px auto 0;
         display: flex;
-        width: 84%;
+        width: 100%;
         max-width: 1280px;
         padding: 0;
         overflow: hidden;
@@ -12,12 +12,12 @@
             max-width: 300px;
             width: 100%;
             min-height: 80vh;
-            display: block;
-            border-right: 1px solid #C7C7C7;
+            display: block; 
+            background: #f9f9f9;
             clear: both;
 
             .header-list {
-                background: #eee;
+                background: #0099d3;
                 border-radius: 2px 0px 0 0;
                 height: 50px;
 
@@ -25,45 +25,52 @@
                     margin: 0;
                     background: transparent;
                 }
-                strong{
+
+                strong {
                     position: relative;
                     top: 3px;
                 }
             }
 
             .profile {
-                .body{
+                .body {
                     margin: 18px auto;
-                    width: 80%; 
-                    small{
+                    width: 80%;
+
+                    small {
                         color: var(--primary);
                         font-size: 14px;
                         font-weight: lighter;
                     }
-                    p{
+
+                    p {
                         margin: 0;
                         font-size: 13px;
                         color: #999;
                         margin: 3px 0 22px;
                     }
-                    h2{
+
+                    h2 {
                         font-weight: bold;
                         font-size: 17px;
                         margin: 5px 0 10px;
                     }
                 }
+
                 .avatar {
                     height: 150px;
-                    background: var(--primary); 
-                    figure { 
+
+                    figure {
                         margin: 0;
                         position: relative;
                         padding: 0px 0;
-                        img{
+
+                        img {
                             margin: 0 auto;
                             display: block;
                         }
-                        button{
+
+                        button {
                             position: absolute;
                             bottom: 25px;
                             margin: 0 auto;

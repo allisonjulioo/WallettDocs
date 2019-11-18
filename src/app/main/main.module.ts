@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ModalSearchComponent } from './modal-search/modal-search.component'; 
 import { DownloadDocsOptionsComponent } from './download-docs-options/download-docs-options.component';
 import { EditDocsComponent } from './edit-docs/edit-docs.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { 
   MatButtonModule, 
@@ -31,25 +32,32 @@ import {
   MatPaginatorModule,
   MatOptionModule,
   MatSelectModule,
+  MatTableModule,
+  MatBadgeModule,
+  MatRippleModule,
+  MatGridListModule,
+  MatToolbarModule,
+  MatTabsModule,
 } from '@angular/material';
 
 
 @NgModule({
   declarations: [
-    MainComponent, 
+    MainComponent,
     ContentDocComponent,
     ProfileComponent,
-    ModalSearchComponent,  
-    DownloadDocsOptionsComponent, EditDocsComponent
+    ModalSearchComponent,
+    DownloadDocsOptionsComponent,
+    EditDocsComponent
   ],
   imports: [
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {useHash: true}),
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    HttpModule,  
-    BrowserAnimationsModule, 
+    HttpModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
@@ -63,11 +71,18 @@ import {
     MatListModule,
     MatPaginatorModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatRippleModule,
+    PdfViewerModule,
+    MatListModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatTabsModule
   ],
-  providers: [ 
-  ],
-  bootstrap: [MainComponent], 
-  entryComponents: [ModalSearchComponent, DownloadDocsOptionsComponent],
+  providers: [],
+  bootstrap: [MainComponent],
+  entryComponents: [ModalSearchComponent, DownloadDocsOptionsComponent, ContentDocComponent],
 })
 export class MainModule { }

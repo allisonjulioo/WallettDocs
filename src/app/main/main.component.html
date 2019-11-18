@@ -1,50 +1,25 @@
-<div class="router-name">
-    <h2></h2>
-</div>
 <div class="content">
-    <mat-card class="animated mat-elevation-z10">
+    <mat-card class="animated mat-elevation-z0 todo">
         <div id="list-docs" class="animated slideInLeft faster">
-            <section class="header-list">
-                <button mat-flat-button color="light" routerLink="/profile">
-                    <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison Julio</strong>
-                </button>
-                <div class="left-actions">
-                    <!-- <button mat-icon-button matTooltip="Baixar lista de documentos" >
-                        <mat-icon>play_for_work</mat-icon>
-                    </button> -->
-                    <button mat-icon-button class="more-menu" [matMenuTriggerFor]="profile">
-                        <mat-icon>more_vert</mat-icon>
-                    </button> 
-                    <mat-menu #profile="matMenu">
-                        <button mat-menu-item (click)="checkAll =! checkAll">Selecionar tudo</button> 
-                        <button mat-menu-item (click)="openBottomSheet()">Baixar tudo</button>
-                    </mat-menu>
-                </div>
-            </section> 
-            <div class="search-list">
-                <input type="text" name="search" id="" placeholder="Busque por documentos">
-            </div> 
             <div class="list-docs">
+                <!-- <h4>Documentos</h4> -->
+                <div class="search-list">
+                    <input type="text" name="search" id="" placeholder="Busque por documentos">
+                </div> 
                 <button 
                 mat-flat-button color="light" 
                 class="doc" 
-                disableRipple="true" 
+                disableRipple="false" 
                 [ngClass]="{'active' : doc == selectedDoc || checkAll}"
                 *ngFor="let doc of docs"
-                (click)="openDocument(doc, $event, key); child.setDoc(doc)">
-                <mat-checkbox color="primary" 
-                *ngIf="checkAll || doc == checkThis"
+                (click)="openDocument(doc, $event, key);">
+                <mat-checkbox color="primary"
                 [(ngModel)]="checkAll"
                 ></mat-checkbox>
-                    <button mat-icon-button (click)="lock=!lock">
-                        <mat-icon *ngIf="lock">lock</mat-icon>
-                        <mat-icon *ngIf="!lock">lock_open</mat-icon>
-                    </button>
-                    <span>{{doc.label}}</span>
+                    <span>{{doc.description}}</span>
                     <button mat-icon-button [matMenuTriggerFor]="menu" class="more-menu">
                         <mat-icon>more_vert</mat-icon>
                     </button>
-
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Baixar</button>
                         <button mat-menu-item (click)="checkThisDoc(doc)">Selecionar</button>
@@ -52,17 +27,63 @@
                     </mat-menu>
                 </button>
             </div>
-            <div class="pagination">
-                <mat-paginator 
-                [hidePageSize]="true"
-                [length]="100"
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 25, 100]">
-                </mat-paginator>
+        </div> 
+        <figure *ngIf="!selectedDoc.description" class="no-doc">
+            <span>
+                <img src="./assets/docs.svg" alt="" srcset="">
+                <h3>Selecione um documento</h3>
+            </span>
+        </figure>
+        <section *ngIf="selectedDoc.description">
+            <mat-toolbar color="accent">
+                <mat-toolbar-row>
+                    <span>{{selectedDoc?.description}}</span>
+                    <span class="spacer"></span>
+                    <button mat-icon-button>
+                        <mat-icon color="light" (click)="selectedDoc = {}" class="icon" aria-hidden="false" aria-label="Favorito">close</mat-icon>
+                    </button>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <div class="content-doc flex">
+                <section style="left: 18px; min-width: 300px;">
+                    <mat-list>
+                        <mat-list-item *ngFor="let doc of selectedDoc.fields">
+                            <h3 matLine> <b>{{doc.description}}</b> </h3>
+                            <p matLine>
+                            <button matTooltip="Copiar {{doc.value}}" (click)="copy.copy(doc.value)"  mat-button>{{doc.value}}</button>
+                            </p>
+                        </mat-list-item>
+                    </mat-list> 
+                </section> 
+                <div class="pdf">
+                    <div class="overlap space-between">
+                    <h4>Anexo</h4>
+                    <section class="flex align-center ">
+                        <button mat-icon-button color="light" matTooltip="Ampliar" (click)="changeZoom('add')">
+                            <mat-icon>zoom_in</mat-icon>
+                        </button> 
+                        <button mat-icon-button color="light" matTooltip="Diminuir" (click)="changeZoom('remove')">
+                            <mat-icon>zoom_out</mat-icon>
+                        </button> 
+                        <a mat-icon-button color="light" href="{{selectedDoc.pdf}}" target="_blank" matTooltip="Fullscreen">
+                            <mat-icon>fullscreen</mat-icon>
+                        </a> 
+                        <button mat-icon-button color="light" matTooltip="Baixar">
+                            <mat-icon>cloud_download</mat-icon>
+                        </button> 
+                    </section>
+                    </div>
+                    <pdf-viewer 
+                    [src]="selectedDoc.pdf" 
+                    [render-text]="false"
+                    [original-size]="false"
+                    [show-all]="true"
+                    [zoom]="zoom"
+                    ></pdf-viewer>
+                </div> 
             </div>
-        </div>
-        <it-content-doc #child ></it-content-doc>
-        <router-outlet></router-outlet>
+        </section>
+        
         
     </mat-card>
 </div>

@@ -22,7 +22,9 @@ import {
   MatCardModule, 
   MatInputModule,
   MatDialogModule,
-  MatIconModule
+  MatIconModule,
+  MatMenuModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 
@@ -35,7 +37,7 @@ import {
     NavHeaderComponent
   ],
   imports: [
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {useHash: true}),
     MainModule,
     BrowserModule,
     ReactiveFormsModule,
@@ -47,7 +49,9 @@ import {
     MatCardModule,
     MatInputModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatTooltipModule,
   ],
   providers: [ 
   ],

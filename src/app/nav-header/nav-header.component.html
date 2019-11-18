@@ -7,7 +7,11 @@
   <button mat-button *ngIf="router.url == '/main'" (click)="openDialog()" class="mobile">
     <mat-icon>search</mat-icon> <small>Pesquisar usuário</small>
   </button>
-  <button mat-button routerLink="/splash" class="mobile">
-    <mat-icon>logout</mat-icon> <small>Sair</small>
+  <button mat-button color="light" matTooltip="Allison Julio" [matMenuTriggerFor]="ProfileMenu">
+    <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison</strong>
   </button>
+  <mat-menu #ProfileMenu="matMenu" yPosition="below">
+    <button mat-menu-item routerLink="/profile">Perfil</button>
+    <button mat-menu-item routerLink="/splash">Sair</button>
+  </mat-menu>
 </nav>

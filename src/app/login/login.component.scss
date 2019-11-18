@@ -32,19 +32,6 @@
         min-width: 150px;
         max-width: 500px;
         width: 100%;
-
-        .btn {
-            color: var(--primary);
-            margin-top: 40px !important;
-            min-width: 80% !important;
-            background: transparent;
-            border: 2px solid var(--primary);
-
-            &:hover {
-                background: var(--primary);
-                color: #fff !important;
-            }
-        }
     }
 
     .input-full-width {

@@ -4,8 +4,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
 
 :root {
-    --primary:#db305d;
+    --primary: #0099d3;
     --secondary: #f9f9f9;
+    --tertiary: #db305d;
 }
 
 * {
@@ -13,12 +14,55 @@
     outline: none;
 }
 
+.content-doc {
+    .mat-grid-tile .mat-figure {
+        align-items: baseline;
+        justify-content: flex-start;
+    }
+
+    .mat-grid-tile {
+        margin-left: 18px;
+    }
+}
+
 body {
     padding: 0;
     margin: 0;
     height: 100vh;
     background: #F1F3F5;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+.content {
+    margin-top: 59px;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
 
 .btn,
@@ -47,9 +91,8 @@ button,
     }
 }
 
-.btn.mat-accent {
-    // background: #fff !important;
-    // color: var(--secondary) !important;
+.mat-toolbar.mat-primary {
+    background: var(--primary) !important;
 }
 
 .mat-card {
@@ -87,23 +130,4 @@ svg {
         position: relative;
     }
 
-}
-
-.router-name {
-    display: block;
-    height: 300px;
-    width: 100%;
-    background: var(--primary);
-    margin: 0px 0 10px;
-    align-items: center;
-    position: relative;
-    top: 57px;
-
-    h2 {
-        width: 84%;
-        max-width: 1280px;
-        margin: 0 auto;
-        display: block;
-        font-weight: normal;
-    }
 }

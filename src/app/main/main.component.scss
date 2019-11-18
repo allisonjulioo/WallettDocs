@@ -2,10 +2,101 @@
     padding-top: 100px;
     overflow: hidden;
 
+    section {
+        flex: 1;
+    }
+    .no-doc{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 200px;   
+        }
+    }
+    .content-doc {
+        display: flex;
+        padding: 15px;
+        flex: 1;
+        background: #f8f8f8;
+        height: 100%;
 
-    mat-card {
-        min-height: 70vh;
-        margin: -190px auto 0;
+        .doc-card {
+            display: table;
+            max-width: 200px;
+            margin-right: 20px;
+        }
+    }
+
+    .pdf {
+        position: relative;
+        border: 1px solid #eee;
+        max-width: 500px;
+        min-width: 500px;
+        background: #fff;
+        overflow: hidden;
+        z-index: 0;
+        .overlap{
+            transition: all ease .4s;
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background: rgba(#000,.7);
+            width: calc(100% - 40px);
+            height: 60px;
+            z-index: +1;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding: 0 20px;
+            justify-content: space-between;
+            h4{
+                flex: 1;
+            }
+            section{
+                justify-content: flex-end;
+                display: flex;
+            }
+        }
+        &:hover{
+            .overlap{
+                top: 0;
+                transition: all ease .4s;
+            }
+        }
+        pdf-viewer {
+            width: calc(100% - 300px);
+        }
+
+        mat-grid-tile {
+            height: 100vh;
+        }
+    }
+    .search-list {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        padding: 0 17px;
+
+        input {
+            border: none;
+            background: #f8f8f8;
+            width: 100%;
+            border-radius: 4px;
+            height: 20px;
+            padding: 8px 10px;
+
+            &::placeholder {
+                color: #838383;
+                font-style: italic;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .todo {
+        min-height: 100vh;
+        margin: 50px auto 0;
         display: flex;
         width: 100%;
         max-width: 1280px;
@@ -20,6 +111,11 @@
             border-right: 1px solid #C7C7C7;
             clear: both;
             position: relative;
+
+            h4 {
+                padding: 18px 20px;
+                margin: 0;
+            }
 
             .header-list {
                 background: #eee;
@@ -39,28 +135,6 @@
                 }
             }
 
-            .search-list {
-                background: #F8F8F8;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                input {
-                    border: none;
-                    width: 83%;
-                    border-radius: 4px;
-                    height: 20px;
-                    padding: 8px 10px;
-
-                    &::placeholder {
-                        color: #838383;
-                        font-style: italic;
-                        font-size: 12px;
-                    }
-                }
-            }
-
             .list-docs {
                 padding-bottom: 2px;
 
@@ -77,6 +151,7 @@
                             font-weight: 300;
                             margin-top: 5px;
                             display: inline-block;
+                            margin-left: 15px
                         }
 
                         .more-menu {
@@ -99,26 +174,17 @@
                     }
                 }
             }
-
-            .pagination {
-                display: flex;
-                align-items: center;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                background: transparent;
-            }
         }
     }
 
     @media (max-width: 1024px) {
-        mat-card {
+        .todo {
             width: 100% !important;
         }
     }
 
     @media(max-width: 981px) {
-        mat-card {
+        .todo {
             width: 100%;
             display: block;
             margin: -250px auto 0;
@@ -137,7 +203,8 @@
             // position: absolute;
             top: 0;
             background: #fff;
-            .flex{
+
+            .flex {
                 display: block;
             }
         }

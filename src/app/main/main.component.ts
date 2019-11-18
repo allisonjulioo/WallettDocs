@@ -1,49 +1,70 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ContentDocComponent } from './content-doc/content-doc.component';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { DownloadDocsOptionsComponent } from './download-docs-options/download-docs-options.component';
+import { CopyClipboardService } from '../copy-clipboard.service';
 
+export interface Documents {
+  description: string;
+  value: string;
+  last_modify: string;
+  pdf: string;
+  fields: Array<any>;
+}
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'it-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
+
 export class MainComponent implements OnInit {
-  @ViewChild(ContentDocComponent) contentDocComponentRef: ContentDocComponent;
+  displayedColumns: string[] = ['description', 'value',];
   selectedDoc;
   checkThis;
-  docs = [
+  checkAll;
+  file;
+  zoom = .6;
+  docs: Documents[] = [
     {
-      label: 'Carteira de identidade',
-      details: [
+      description: 'Titulo de eleitor',
+      value: '15909394',
+      last_modify: '29/08/1992',
+      pdf: './assets/xerox/titulo de eleitor.pdf',
+      fields: [
         {
-          label: 'Nome',
-          value: ['Allison Julio de Oliveira Nunes'],
+          description: 'Nome completo',
+          value: 'Allison julio'
         },
         {
-          label: 'Filiação',
-          value: ['Elizabet Dias de Oliveira Nunes', 'Adson Nunes de Souza']
-        },
-        {
-          label: 'Naturalidade',
-          value: ['Vitória - ES']
+          description: 'Nome completo',
+          value: 'Allison julio'
         }
       ]
     },
     {
-      label: 'Carteira de trabalho'
+      description: 'Carteira de trabalho',
+      value: '1601153936-0',
+      last_modify: '29/08/1992',
+      pdf: './assets/xerox/carteira de trabalho frente.pdf',
+      fields: [
+        {
+          description: 'Número',
+          value: '12142413'
+        }
+      ]
     },
-    {
-      label: 'Título de eleitor'
-    }
-  ]
-  constructor(private bottomSheet: MatBottomSheet) { }
+  ];
+  constructor(private bottomSheet: MatBottomSheet, public copy: CopyClipboardService) { }
 
   public ngOnInit() {
-    this.contentDocComponentRef.docs = this.docs[0]
     this.selectedDoc = this.docs[0];
   }
-  public openDocument(doc) {
+  upload(event) {
+    console.log(event);
+    this.file = event.target.files[0];
+  }
+
+  public openDocument(doc, evt, key) {
     this.selectedDoc = doc;
   }
   public checkThisDoc(doc) {
@@ -54,6 +75,9 @@ export class MainComponent implements OnInit {
   }
   public openBottomSheet(): void {
     this.bottomSheet.open(DownloadDocsOptionsComponent);
+  }
+  public changeZoom(type){
+    type == 'remove' ? (this.zoom <= 1 ? this.zoom = .6 : this.zoom --) : this.zoom ++ ;
   }
 
 }
