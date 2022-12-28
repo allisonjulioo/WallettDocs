@@ -1,110 +1,110 @@
 :hostit-profile {
+  mat-card {
+    min-height: 100vh;
+    margin: 55px auto 0;
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+    padding: 0;
+    overflow: hidden;
+    flex-direction: row;
+
+    #profile {
+      max-width: 300px;
+      width: 100%;
+      min-height: 80vh;
+      display: block;
+      background: #f9f9f9;
+
+      .header-list {
+        background: #0099d3;
+        border-radius: 2px 0px 0 0;
+        height: 50px;
+
+        button {
+          margin: 0;
+          background: transparent;
+        }
+
+        strong {
+          position: relative;
+          top: 3px;
+        }
+      }
+
+      .profile {
+        .body {
+          margin: 18px auto;
+          width: 80%;
+
+          small {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: lighter;
+          }
+
+          p {
+            margin: 0;
+            font-size: 13px;
+            color: #999;
+            margin: 3px 0 22px;
+          }
+
+          h2 {
+            font-weight: bold;
+            font-size: 17px;
+            margin: 5px 0 10px;
+          }
+        }
+
+        .avatar {
+          height: 150px;
+
+          figure {
+            margin: 0;
+            position: relative;
+            padding: 0px 0;
+
+            img {
+              margin: 0 auto;
+              display: block;
+            }
+
+            button {
+              position: absolute;
+              bottom: 25px;
+              margin: 0 auto;
+              display: block;
+              left: 0;
+              right: 0;
+              background: var(--secondary);
+              // color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
     mat-card {
-        min-height: 100vh;
-        margin: 55px auto 0;
-        display: flex;
-        width: 100%;
-        max-width: 1280px;
-        padding: 0;
-        overflow: hidden;
-
-        #profile {
-            max-width: 300px;
-            width: 100%;
-            min-height: 80vh;
-            display: block; 
-            background: #f9f9f9;
-            clear: both;
-
-            .header-list {
-                background: #0099d3;
-                border-radius: 2px 0px 0 0;
-                height: 50px;
-
-                button {
-                    margin: 0;
-                    background: transparent;
-                }
-
-                strong {
-                    position: relative;
-                    top: 3px;
-                }
-            }
-
-            .profile {
-                .body {
-                    margin: 18px auto;
-                    width: 80%;
-
-                    small {
-                        color: var(--primary);
-                        font-size: 14px;
-                        font-weight: lighter;
-                    }
-
-                    p {
-                        margin: 0;
-                        font-size: 13px;
-                        color: #999;
-                        margin: 3px 0 22px;
-                    }
-
-                    h2 {
-                        font-weight: bold;
-                        font-size: 17px;
-                        margin: 5px 0 10px;
-                    }
-                }
-
-                .avatar {
-                    height: 150px;
-
-                    figure {
-                        margin: 0;
-                        position: relative;
-                        padding: 0px 0;
-
-                        img {
-                            margin: 0 auto;
-                            display: block;
-                        }
-
-                        button {
-                            position: absolute;
-                            bottom: 25px;
-                            margin: 0 auto;
-                            display: block;
-                            left: 0;
-                            right: 0;
-                            background: var(--secondary);
-                            // color: white;
-                        }
-                    }
-                }
-            }
-        }
+      width: 100% !important;
     }
+  }
 
-    @media (max-width: 1024px) {
-        mat-card {
-            width: 100% !important;
+  @media (max-width: 981px) {
+    mat-card {
+      width: 100%;
+      display: block;
+      margin: -251px auto 0;
+
+      #profile {
+        max-width: 100%;
+
+        .header-list {
+          border-radius: 2px;
         }
+      }
     }
-
-    @media(max-width: 981px) {
-        mat-card {
-            width: 100%;
-            display: block;
-            margin: -251px auto 0;
-
-            #profile {
-                max-width: 100%;
-
-                .header-list {
-                    border-radius: 2px;
-                }
-            }
-        }
-    }
+  }
 }

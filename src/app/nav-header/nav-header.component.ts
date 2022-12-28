@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalSearchComponent } from './../main/modal-search/modal-search.component';
-import { MatDialog } from '@angular/material';
 
 export interface DialogData {
   cpf: number;
@@ -31,7 +31,7 @@ export class NavHeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.cpf = result;
-      console.log('Busca', { cpf: result.cpf, password: result.password });
+      console.log('Busca', { cpf: result?.cpf, password: result?.password });
 
     });
   }

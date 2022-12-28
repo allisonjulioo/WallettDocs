@@ -1,53 +1,55 @@
 :hostit-login {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  min-height: 100%;
+  width: 100%;
+
+  svg {
+    display: block;
+    margin: 0 auto;
+    width: 64px;
+    text-align: center;
+  }
+
+  .card-login {
+    text-align: center;
+    padding: 2em;
     align-items: center;
-    justify-content: center;
-    background: var(--primary);
-    min-height: 100%;
     width: 100%;
+    max-width: 400px;
 
-    svg {
-        display: block;
-        margin: 0 auto;
-        width: 64px;
-        text-align: center;
+    .title {
+      margin-bottom: 52px;
     }
 
+    a {
+      margin-top: 15px;
+      display: block;
+      color: var(--primary);
+    }
+  }
+
+  .login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .input-full-width {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%;
+  }
+
+  @media (max-width: 510px) {
     .mat-card {
-        text-align: center;
-        min-width: 400px;
-
-        .title {
-            margin-bottom: 52px;
-        }
-
-        a {
-            margin-top: 15px;
-            display: block;
-            color: var(--primary);
-        }
+      height: 100vh;
+      min-width: auto;
+      max-width: 100%;
+      width: 100%;
+      margin-top: 0px;
     }
-
-    .login-form {
-        min-width: 150px;
-        max-width: 500px;
-        width: 100%;
-    }
-
-    .input-full-width {
-        display: block;
-        margin: 0 auto 10px;
-        width: 80%;
-
-    }
-
-    @media(max-width: 510px) {
-        .mat-card {
-            height: 100vh;
-            min-width: auto;
-            max-width: 100%;
-            width: 100%;
-            margin-top: 0px;
-        }
-    }
+  }
 }

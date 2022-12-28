@@ -1,212 +1,220 @@
 :hostit-main {
-    padding-top: 100px;
+  padding-top: 100px;
+  overflow: hidden;
+
+  section {
+    flex: 1;
+  }
+  .no-doc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 200px;
+    }
+  }
+  .content-doc {
+    display: flex;
+    padding: 15px;
+    flex: 1;
+    background: #f8f8f8;
+    height: 100%;
+
+    .doc-card {
+      display: table;
+      max-width: 200px;
+      margin-right: 20px;
+    }
+    .item-list-doc {
+      height: auto !important ;
+    }
+  }
+
+  .pdf {
+    position: relative;
+    border: 1px solid #eee;
+    max-width: 500px;
+    min-width: 500px;
+    background: #fff;
     overflow: hidden;
-
-    section {
+    z-index: 0;
+    .overlap {
+      transition: all ease 0.4s;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: rgba(#000, 0.7);
+      width: calc(100% - 40px);
+      height: 60px;
+      z-index: +1;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 0 20px;
+      justify-content: space-between;
+      h4 {
         flex: 1;
-    }
-    .no-doc{
-        width: 100%;
+      }
+      section {
+        justify-content: flex-end;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        img{
-            width: 200px;   
-        }
+      }
     }
-    .content-doc {
-        display: flex;
-        padding: 15px;
-        flex: 1;
-        background: #f8f8f8;
-        height: 100%;
-
-        .doc-card {
-            display: table;
-            max-width: 200px;
-            margin-right: 20px;
-        }
+    &:hover {
+      .overlap {
+        top: 0;
+        transition: all ease 0.4s;
+      }
+    }
+    pdf-viewer {
+      width: calc(100% - 300px);
     }
 
-    .pdf {
-        position: relative;
-        border: 1px solid #eee;
-        max-width: 500px;
-        min-width: 500px;
-        background: #fff;
-        overflow: hidden;
-        z-index: 0;
-        .overlap{
-            transition: all ease .4s;
-            position: absolute;
-            top: -100%;
-            left: 0;
-            background: rgba(#000,.7);
-            width: calc(100% - 40px);
-            height: 60px;
-            z-index: +1;
-            display: flex;
-            align-items: center;
-            color: #fff;
-            padding: 0 20px;
-            justify-content: space-between;
-            h4{
-                flex: 1;
-            }
-            section{
-                justify-content: flex-end;
-                display: flex;
-            }
-        }
-        &:hover{
-            .overlap{
-                top: 0;
-                transition: all ease .4s;
-            }
-        }
-        pdf-viewer {
-            width: calc(100% - 300px);
-        }
-
-        mat-grid-tile {
-            height: 100vh;
-        }
+    mat-grid-tile {
+      height: 100vh;
     }
-    .search-list {
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 0 17px;
+  }
+  .search-list {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 17px;
 
-        input {
-            border: none;
-            background: #f8f8f8;
+    input {
+      border: none;
+      background: #f8f8f8;
+      width: 100%;
+      border-radius: 4px;
+      height: 20px;
+      padding: 8px 10px;
+
+      &::placeholder {
+        color: #838383;
+        font-style: italic;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .todo {
+    min-height: 100vh;
+    margin: 50px auto 0;
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+    padding: 0;
+    overflow: hidden;
+    flex-direction: row;
+
+    #list-docs {
+      max-width: 300px;
+      width: 100%;
+      min-height: 80vh;
+      display: block;
+      border-right: 1px solid #c7c7c7;
+      clear: both;
+      position: relative;
+
+      h4 {
+        padding: 18px 20px;
+        margin: 0;
+      }
+
+      .header-list {
+        background: #eee;
+        border-radius: 2px 0px 0 0;
+
+        button {
+          margin: 0;
+          background: transparent;
+          border-radius: 2px 0px 0 0;
+          position: relative;
+        }
+
+        .left-actions {
+          float: right;
+          margin-right: 11px;
+          margin-top: 2px;
+        }
+      }
+
+      .list-docs {
+        padding-bottom: 2px;
+
+        button {
+          border-left: 3px solid transparent;
+
+          &.doc {
             width: 100%;
-            border-radius: 4px;
-            height: 20px;
-            padding: 8px 10px;
+            text-align: left;
+            height: 65px;
+            border-bottom: 1px solid #eeeeee;
 
-            &::placeholder {
-                color: #838383;
-                font-style: italic;
-                font-size: 12px;
+            .content-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
             }
-        }
-    }
+            span {
+              font-weight: 300;
+              display: inline-block;
+            }
 
+            .more-menu {
+              float: right;
+            }
+
+            &:hover {
+              background-color: #f7f7f7;
+            }
+
+            &.active {
+              background-color: #eee;
+              // color: var(--secondary);
+              border-left: 3px solid #0099d3;
+
+              span {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
     .todo {
-        min-height: 100vh;
-        margin: 50px auto 0;
-        display: flex;
-        width: 100%;
-        max-width: 1280px;
-        padding: 0;
-        overflow: hidden;
+      width: 100% !important;
+    }
+  }
 
-        #list-docs {
-            max-width: 300px;
-            width: 100%;
-            min-height: 80vh;
-            display: block;
-            border-right: 1px solid #C7C7C7;
-            clear: both;
-            position: relative;
+  @media (max-width: 981px) {
+    .todo {
+      width: 100%;
+      display: block;
+      margin: -250px auto 0;
+      min-height: 100vh;
 
-            h4 {
-                padding: 18px 20px;
-                margin: 0;
-            }
+      #list-docs {
+        max-width: 100%;
 
-            .header-list {
-                background: #eee;
-                border-radius: 2px 0px 0 0;
-
-                button {
-                    margin: 0;
-                    background: transparent;
-                    border-radius: 2px 0px 0 0;
-                    position: relative;
-                }
-
-                .left-actions {
-                    float: right;
-                    margin-right: 11px;
-                    margin-top: 2px;
-                }
-            }
-
-            .list-docs {
-                padding-bottom: 2px;
-
-                button {
-                    border-left: 3px solid transparent;
-
-                    &.doc {
-                        width: 100%;
-                        text-align: left;
-                        height: 65px;
-                        border-bottom: 1px solid #eeeeee;
-
-                        span {
-                            font-weight: 300;
-                            margin-top: 5px;
-                            display: inline-block;
-                            margin-left: 15px
-                        }
-
-                        .more-menu {
-                            float: right;
-                        }
-
-                        &:hover {
-                            background-color: #f7f7f7;
-                        }
-
-                        &.active {
-                            background-color: #eee;
-                            // color: var(--secondary);
-                            border-left: 3px solid #0099d3;
-
-                            span {
-                                font-weight: bold;
-                            }
-                        }
-                    }
-                }
-            }
+        .header-list {
+          border-radius: 2px;
         }
+      }
     }
 
-    @media (max-width: 1024px) {
-        .todo {
-            width: 100% !important;
-        }
+    it-content-doc {
+      // position: absolute;
+      top: 0;
+      background: #fff;
+
+      .flex {
+        display: block;
+      }
     }
-
-    @media(max-width: 981px) {
-        .todo {
-            width: 100%;
-            display: block;
-            margin: -250px auto 0;
-            min-height: 100vh;
-
-            #list-docs {
-                max-width: 100%;
-
-                .header-list {
-                    border-radius: 2px;
-                }
-            }
-        }
-
-        it-content-doc {
-            // position: absolute;
-            top: 0;
-            background: #fff;
-
-            .flex {
-                display: block;
-            }
-        }
-    }
+  }
 }

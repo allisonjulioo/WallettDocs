@@ -1,82 +1,74 @@
 :hostit-nav-header {
-    position: fixed;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    top: 0;
-    z-index: 999;
-    background: #fff;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  top: 0;
+  z-index: 999;
+  background: #fff;
 
-    .nav {
-        max-width: 1280px;
-        width: 100%;
+  .nav {
+    max-width: 1280px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 57px;
+    padding: 0 20px;
+    background: #fff;
+    flex-direction: row;
+
+    #logo {
+      flex: 11;
+      display: flex;
+      margin-left: 0;
+      align-items: center;
+      cursor: pointer;
+      height: 50px;
+      padding: 0;
+      margin: 0;
+      span {
+        color: var(--secondary);
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      svg {
+        width: 30px;
+        height: 60px;
+        margin: 0 12px 0 0;
+
+        path {
+          color: var(--secondary);
+        }
+      }
+    }
+
+    .btn {
+      &.search-user {
+        display: block;
+        flex: 1;
+        float: right;
+        margin: 0;
+      }
+    }
+    .user{
         display: flex;
         align-items: center;
-        height: 57px;
-        padding: 0 20px;
-        background: #fff;
-    
+    }
+  }
 
-        #logo {
-            flex: 11;
-            display: flex;
-            margin-left: 0;
-            align-items: center;
-            cursor: pointer;
-            height: 50px;
-            padding: 0;
-            margin: 0;
-            span {
-                color: var(--secondary);
-                font-weight: 400;
-                font-size: 18px;
-            }
-
-            svg {
-                width: 30px;   
-                height: 60px;
-                margin: 0 12px 0 0;
-
-                path {
-                    color: var(--secondary);
-                }
-            }
-        }
-
-        .btn {
-            &.search-user {
-                display: block;
-                flex: 1;
-                float: right;
-                margin: 0;
-            }
-        }
-
-
-        .search-user-m {
-            display: none;
-
-            mat-icon {
-                color: black;
-            }
-        }
+  @media (max-width: 981px) {
+    .btn {
+      &.search-user {
+        display: none !important;
+      }
     }
 
-    @media(max-width: 981px) {
-        .btn {
-            &.search-user {
-                display: none !important;
-            }
-        }
-
-        .search-user-m {
-            display: block !important;
-        }
-        .mobile{
-          min-width: auto;
-            small{
-                display: none;
-            }
-        }
+    .mobile {
+      min-width: auto;
+      small {
+        display: none;
+      }
     }
+  }
 }

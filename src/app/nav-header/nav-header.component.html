@@ -1,14 +1,28 @@
-<nav class="nav ">
+<nav class="nav">
   <figure routerLink="/main" id="logo" class="">
     <button mat-button>
-      <img src="../../assets/img/log.png" alt="" srcset="" width="100">
+      <img src="../../assets/img/log.png" alt="" srcset="" width="100" />
     </button>
   </figure>
-  <button mat-button *ngIf="router.url == '/main'" (click)="openDialog()" class="mobile">
+  <button
+    mat-button
+    *ngIf="router.url === '/main'"
+    (click)="openDialog()"
+    class="mobile"
+  >
     <mat-icon>search</mat-icon> <small>Pesquisar usuário</small>
   </button>
-  <button mat-button color="light" matTooltip="Allison Julio" [matMenuTriggerFor]="ProfileMenu">
-    <img src="./assets/img/avatar.png" alt="" width="50"> <strong>Allison</strong>
+  <button
+    mat-button
+    class="profile-menu"
+    color="light"
+    matTooltip="Allison Julio"
+    [matMenuTriggerFor]="ProfileMenu"
+  >
+    <span class="user">
+      <img src="./assets/img/avatar.png" alt="" width="40" />
+      <strong>Allison</strong>
+    </span>
   </button>
   <mat-menu #ProfileMenu="matMenu" yPosition="below">
     <button mat-menu-item routerLink="/profile">Perfil</button>

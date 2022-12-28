@@ -1,89 +1,139 @@
 <div class="content">
-    <mat-card class="animated mat-elevation-z0 todo">
-        <div id="list-docs" class="animated slideInLeft faster">
-            <div class="list-docs">
-                <!-- <h4>Documentos</h4> -->
-                <div class="search-list">
-                    <input type="text" name="search" id="" placeholder="Busque por documentos">
-                </div> 
-                <button 
-                mat-flat-button color="light" 
-                class="doc" 
-                disableRipple="false" 
-                [ngClass]="{'active' : doc == selectedDoc || checkAll}"
-                *ngFor="let doc of docs"
-                (click)="openDocument(doc, $event, key);">
-                <mat-checkbox color="primary"
+  <mat-card class="animated mat-elevation-z0 todo" row>
+    <div id="list-docs" class="animated slideInLeft faster">
+      <div class="list-docs">
+        <!-- <h4>Documentos</h4> -->
+        <div class="search-list">
+          <input
+            type="text"
+            name="search"
+            id=""
+            placeholder="Busque por documentos"
+          />
+        </div>
+        <button
+          mat-flat-button
+          color="light"
+          class="doc"
+          disableRipple="false"
+          [ngClass]="{ active: doc == selectedDoc || checkAll }"
+          *ngFor="let doc of docs"
+          (click)="openDocument(doc, $event, key)"
+        >
+          <section class="content-item">
+            <section>
+              <mat-checkbox
+                color="primary"
                 [(ngModel)]="checkAll"
-                ></mat-checkbox>
-                    <span>{{doc.description}}</span>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Baixar</button>
-                        <button mat-menu-item (click)="checkThisDoc(doc)">Selecionar</button>
-                        <button mat-menu-item>Excluir</button>
-                    </mat-menu>
+              ></mat-checkbox>
+              <span>{{ doc.description }}</span>
+            </section>
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              class="more-menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Baixar</button>
+              <button mat-menu-item (click)="checkThisDoc(doc)">
+                Selecionar
+              </button>
+              <button mat-menu-item>Excluir</button>
+            </mat-menu>
+          </section>
+        </button>
+      </div>
+    </div>
+    <figure *ngIf="!selectedDoc.description" class="no-doc">
+      <span>
+        <img src="./assets/docs.svg" alt="" srcset="" />
+        <h3>Selecione um documento</h3>
+      </span>
+    </figure>
+    <section *ngIf="selectedDoc.description">
+      <mat-toolbar color="accent">
+        <mat-toolbar-row>
+          <span>{{ selectedDoc?.description }}</span>
+          <span class="spacer"></span>
+          <button mat-icon-button>
+            <mat-icon
+              color="light"
+              (click)="selectedDoc = {}"
+              class="icon"
+              aria-hidden="false"
+              aria-label="Favorito"
+              >close</mat-icon
+            >
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div class="content-doc flex">
+        <section style="left: 18px; min-width: 300px">
+          <mat-list>
+            <mat-list-item
+              *ngFor="let doc of selectedDoc.fields"
+              class="item-list-doc"
+            >
+              <h3 matLine>
+                <b>{{ doc.description }}</b>
+              </h3>
+              <p matLine>
+                <button
+                  matTooltip="Copiar {{ doc.value }}"
+                  (click)="copy.copy(doc.value)"
+                  mat-button
+                >
+                  {{ doc.value }}
                 </button>
-            </div>
-        </div> 
-        <figure *ngIf="!selectedDoc.description" class="no-doc">
-            <span>
-                <img src="./assets/docs.svg" alt="" srcset="">
-                <h3>Selecione um documento</h3>
-            </span>
-        </figure>
-        <section *ngIf="selectedDoc.description">
-            <mat-toolbar color="accent">
-                <mat-toolbar-row>
-                    <span>{{selectedDoc?.description}}</span>
-                    <span class="spacer"></span>
-                    <button mat-icon-button>
-                        <mat-icon color="light" (click)="selectedDoc = {}" class="icon" aria-hidden="false" aria-label="Favorito">close</mat-icon>
-                    </button>
-                </mat-toolbar-row>
-            </mat-toolbar>
-            <div class="content-doc flex">
-                <section style="left: 18px; min-width: 300px;">
-                    <mat-list>
-                        <mat-list-item *ngFor="let doc of selectedDoc.fields">
-                            <h3 matLine> <b>{{doc.description}}</b> </h3>
-                            <p matLine>
-                            <button matTooltip="Copiar {{doc.value}}" (click)="copy.copy(doc.value)"  mat-button>{{doc.value}}</button>
-                            </p>
-                        </mat-list-item>
-                    </mat-list> 
-                </section> 
-                <div class="pdf">
-                    <div class="overlap space-between">
-                    <h4>Anexo</h4>
-                    <section class="flex align-center ">
-                        <button mat-icon-button color="light" matTooltip="Ampliar" (click)="changeZoom('add')">
-                            <mat-icon>zoom_in</mat-icon>
-                        </button> 
-                        <button mat-icon-button color="light" matTooltip="Diminuir" (click)="changeZoom('remove')">
-                            <mat-icon>zoom_out</mat-icon>
-                        </button> 
-                        <a mat-icon-button color="light" href="{{selectedDoc.pdf}}" target="_blank" matTooltip="Fullscreen">
-                            <mat-icon>fullscreen</mat-icon>
-                        </a> 
-                        <button mat-icon-button color="light" matTooltip="Baixar">
-                            <mat-icon>cloud_download</mat-icon>
-                        </button> 
-                    </section>
-                    </div>
-                    <pdf-viewer 
-                    [src]="selectedDoc.pdf" 
-                    [render-text]="false"
-                    [original-size]="false"
-                    [show-all]="true"
-                    [zoom]="zoom"
-                    ></pdf-viewer>
-                </div> 
-            </div>
+              </p>
+            </mat-list-item>
+          </mat-list>
         </section>
-        
-        
-    </mat-card>
+        <div class="pdf">
+          <div class="overlap space-between">
+            <h4>Anexo</h4>
+            <section class="flex align-center">
+              <button
+                mat-icon-button
+                color="light"
+                matTooltip="Ampliar"
+                (click)="changeZoom('add')"
+              >
+                <mat-icon>zoom_in</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="light"
+                matTooltip="Diminuir"
+                (click)="changeZoom('remove')"
+              >
+                <mat-icon>zoom_out</mat-icon>
+              </button>
+              <a
+                mat-icon-button
+                color="light"
+                href="{{ selectedDoc.pdf }}"
+                target="_blank"
+                matTooltip="Fullscreen"
+              >
+                <mat-icon>fullscreen</mat-icon>
+              </a>
+              <button mat-icon-button color="light" matTooltip="Baixar">
+                <mat-icon>cloud_download</mat-icon>
+              </button>
+            </section>
+          </div>
+          <pdf-viewer
+            [src]="selectedDoc.pdf"
+            [render-text]="false"
+            [original-size]="false"
+            [show-all]="true"
+            [zoom]="zoom"
+          ></pdf-viewer>
+        </div>
+      </div>
+    </section>
+  </mat-card>
 </div>
