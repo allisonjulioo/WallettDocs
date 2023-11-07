@@ -16,8 +16,8 @@ export interface Documents {
 const docsArr: Documents[] = [
   {
     description: "Carteira de identidade",
-    value: "15909394",
-    last_modify: "29/08/1992",
+    value: "90090999",
+    last_modify: "29/08/2001",
     icons: "",
     fields: [
       {
@@ -26,14 +26,13 @@ const docsArr: Documents[] = [
       },
       {
         description: "Nome completo",
-        value: "Allison julio",
+        value: "Allison",
       },
     ],
   },
 ];
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: "it-edit-docs",
   templateUrl: "./edit-docs.component.html",
   styleUrls: ["./edit-docs.component.scss"],
